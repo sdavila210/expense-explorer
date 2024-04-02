@@ -1,0 +1,13 @@
+{
+  "name": "expense-explorer",
+  "version": "1.0.0",
+  "description": "A travel budgeting application that allows users to input trip details and expenses.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
