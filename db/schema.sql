@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS express-explore_db;
-CREATE DATABASE express-explore_db;
+DROP DATABASE IF EXISTS expense-explore_db;
+CREATE DATABASE expense-explore_db;
