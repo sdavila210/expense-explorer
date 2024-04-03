@@ -1,2 +1,5 @@
-DROP DATABASE IF EXISTS expense-explore_db;
-CREATE DATABASE expense-explore_db;
+
+
+DROP DATABASE IF EXISTS expense-explorer_db;
+CREATE DATABASE expense-explorer_db;
+
