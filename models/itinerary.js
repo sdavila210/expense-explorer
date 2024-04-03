@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 
 // Create a new Sequelize model for books
-class itinerary extends Model {}
+class itinerary extends Model { }
 
 
 itinerary.init(
@@ -28,10 +28,10 @@ itinerary.init(
     // Will become `is_paperback` in table due to `underscored` flag
     Day_activities: {
       type: DataTypes.BOOLEAN
-    }
+    },
     Night_activities: {
-        type: DataTypes.BOOLEAN
-      }
+      type: DataTypes.BOOLEAN
+    },
   },
   {
     // Link to database connection
@@ -40,3 +40,5 @@ itinerary.init(
     timestamps: false,
     underscored: true,
     modelName: 'itinerary'
+  }
+);
