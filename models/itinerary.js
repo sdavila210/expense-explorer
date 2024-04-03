@@ -28,12 +28,12 @@ itinerary.init(
     // Will become `is_paperback` in table due to `underscored` flag
     Day_activities: {
       type: DataTypes.BOOLEAN
-    }
+    },
     Night_activities: {
         type: DataTypes.BOOLEAN
       }
   },
-  {
+);
     // Link to database connection
     sequelize,
     // Set to false to remove `created_at` and `updated_at` fields
