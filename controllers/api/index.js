@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const homeRoutes = require('./homeRoutes');
 const userRoutes = require('./userRoutes');
-const tripRroutes = require('./tripRoutes');
+const tripRoutes = require('./tripRoutes');
 const itineraryRoutes = require('./itineraryRoutes');
 const budgetRoutes = require('./budgetRoutes');
 
