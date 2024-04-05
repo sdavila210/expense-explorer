@@ -33,7 +33,7 @@ itinerary.init(
       type: DataTypes.BOOLEAN
     },
   },
-  {
+{
     // Link to database connection
     sequelize,
     // Set to false to remove `created_at` and `updated_at` fields
