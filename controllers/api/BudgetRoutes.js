@@ -18,7 +18,9 @@ router.get('/Budget', withAuth, (req, res) => {
     })
         .then(dbBudgetData => {
             const budgets = dbBudgetData.map(budget => budget.get({ plain: true }));
-            res.render('budgets', { budgets, loggedIn: true, username: req.session.username });
+
+            res.render('Budget', { budgets, loggedIn: true, username: req.session.username });
+
         })
         .catch(err => {
             console.log(err);
