@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Profile } = require('../models');
 const withAuth = require('../utils/auth');
+
 // Get user profile by user_id
 router.get('/user', withAuth, (req, res) => {
     User.findByPk(req.session.user_id, {
@@ -24,6 +25,7 @@ router.get('/user', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
 // Update user profile
 router.post('/user', withAuth, (req, res) => {
     User.update(
@@ -48,6 +50,7 @@ router.post('/user', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
 // Delete user account
 router.delete('/user/delete', withAuth, (req, res) => {
     User.destroy({
@@ -66,4 +69,5 @@ router.delete('/user/delete', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
 module.exports = router;

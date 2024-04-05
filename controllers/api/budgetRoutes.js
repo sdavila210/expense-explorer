@@ -3,12 +3,12 @@ const { Budget, Expense } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Get all budgets for a user
-router.get('/budgets', withAuth, (req, res) => {
+router.get('/Budget', withAuth, (req, res) => {
     Budget.findAll({
         where: {
             user_id: req.session.user_id
         },
-        attributes: ['id', 'budget_name', 'total_amount', 'created_at'],
+        attributes: ['id', 'category_cost', 'total_amount', 'date_created'],
         include: [
             {
                 model: Expense,
@@ -18,7 +18,9 @@ router.get('/budgets', withAuth, (req, res) => {
     })
         .then(dbBudgetData => {
             const budgets = dbBudgetData.map(budget => budget.get({ plain: true }));
-            res.render('budgets', { budgets, loggedIn: true, username: req.session.username });
+
+            res.render('Budget', { budgets, loggedIn: true, username: req.session.username });
+
         })
         .catch(err => {
             console.log(err);
@@ -27,7 +29,7 @@ router.get('/budgets', withAuth, (req, res) => {
 });
 
 // Edit a specific budget
-router.get('/budgets/edit/:id', withAuth, (req, res) => {
+router.get('/Budget/edit/:id', withAuth, (req, res) => {
     Budget.findByPk(req.params.id, {
         attributes: ['id', 'category_cost', 'total_amount', 'date_created'],
         include: [
@@ -51,7 +53,7 @@ router.get('/budgets/edit/:id', withAuth, (req, res) => {
 });
 
 // Create a new budget
-router.post('/budgets', withAuth, (req, res) => {
+router.post('/Budget', withAuth, (req, res) => {
     Budget.create({
         budget_name: req.body.budget_name,
         total_amount: req.body.total_amount,
@@ -66,7 +68,7 @@ router.post('/budgets', withAuth, (req, res) => {
 });
 
 // Delete a specific budget
-router.delete('/budgets/:id', withAuth, (req, res) => {
+router.delete('/Budget/:id', withAuth, (req, res) => {
     Budget.destroy({
         where: {
             id: req.params.id,
