@@ -42,3 +42,5 @@ itinerary.init(
     modelName: 'itinerary'
   }
 );
+
+module.exports = itinerary;
