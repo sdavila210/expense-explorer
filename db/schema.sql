@@ -1,5 +1,5 @@
 
 
-DROP DATABASE IF EXISTS expense-explorer_db;
-CREATE DATABASE expense-explorer_db;
+DROP DATABASE IF EXISTS expenseexplorer_db;
+CREATE DATABASE expenseexplorer_db;
 

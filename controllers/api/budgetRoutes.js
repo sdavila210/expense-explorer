@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Budget, Expense } = require('../models');
-const withAuth = require('../utils/auth');
+const { Budget, Expense } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Get all budgets for a user
 router.get('/budgets', withAuth, (req, res) => {
