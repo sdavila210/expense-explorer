@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { User, Profile } = require('../models');
-const withAuth = require('../utils/auth');
+const { User, Profile } = require('../../models');
+const withAuth = require('../../utils/auth');
 // Get user profile by user_id
 router.get('/user', withAuth, (req, res) => {
     User.findByPk(req.session.user_id, {
