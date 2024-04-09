@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-auto">
+        <h2>Time to plan, {{name}}!</h2>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h3>Itinerary to try:</h3>
+
+        <form class="form new-itinerary-form">
+            <div class="form-group">
+                <label for="itinerary-title"> Food name:</label>
+                <input class="form-input" type="text" id="food-title" name="food-title" required />
+            </div>
+            <div class="form-group">
+                <label for="itinerary-cost">Cost of food:</label>
+                <input class="form-input" type="text" id="food-cost" name="food-cost" required />
+            </div>
+
+            <div class="form-group">
+                <button type="food-submit" class="btn btn-primary">Create Food Plan</button>
+            </div>
+        </form>
+
+                <form class="form new-itinerary-form">
+            <div class="form-group">
+                <label for="itinerary-title"> Attraction name:</label>
+                <input class="form-input" type="text" id="attraction-name" name="attraction-name" required />
+            </div>
+            <div class="form-group">
+                <label for="itinerary-cost">Cost of attraction:</label>
+                <input class="form-input" type="text" id="attractions-cost" name="attractions-cost" required />
+            </div>
+
+            <div class="form-group">
+                <button type="attractions-submit" class="btn btn-primary">Create Attractions Plan</button>
+            </div>
+        </form>
+
+                <form class="form new-itinerary-form">
+            <div class="form-group">
+                <label for="itinerary-title"> Hotel name:</label>
+                <input class="form-input" type="text" id="hotel-title" name="hotel-title" required />
+            </div>
+            <div class="form-group">
+                <label for="itinerary-cost">Cost of Hotel:</label>
+                <input class="form-input" type="text" id="hotel-cost" name="hotel-cost" required />
+            </div>
+
+            <div class="form-group">
+                <button type="hotel-submit" class="btn btn-primary">Create Hotel Plan</button>
+            </div>
+        </form>
+
+                <form class="form new-itinerary-form">
+            <div class="form-group">
+                <label for="itinerary-title"> Transportation name:</label>
+                <input class="form-input" type="text" id="transportation-title" name="transportation-title" required />
+            </div>
+            <div class="form-group">
+                <label for="itinerary-cost">Cost of Transportation:</label>
+                <input class="form-input" type="text" id="transportation-cost" name="transportation-cost" required />
+            </div>
+
+            <div class="form-group">
+                <button type="transportation-submit" class="btn btn-primary">Create Transportation Plan</button>
+            </div>
+        </form>
+
+                <form class="form new-itinerary-form">
+            <div class="form-group">
+                <label for="itinerary-title"> Day Activities:</label>
+                <input class="form-input" type="text" id="day_activities-title" name="day_activities-title" required />
+            </div>
+            <div class="form-group">
+                <label for="itinerary-cost">Cost of Activity:</label>
+                <input class="form-input" type="text" id="day_activities-cost" name="day_activities-cost" required />
+            </div>
+
+            <div class="form-group">
+                <button type="day_activities-submit" class="btn btn-primary">Create Day Activity</button>
+            </div>
+        </form>
+
+                <form class="form new-itinerary-form">
+            <div class="form-group">
+                <label for="itinerary-title"> Night Activities:</label>
+                <input class="form-input" type="text" id="night_activities-title" name="night_activities-title" required />
+            </div>
+            <div class="form-group">
+                <label for="itinerary-cost">Cost of Activity:</label>
+                <input class="form-input" type="text" id="night_activities-cost" name="night_activities-cost" required />
+            </div>
+
+            <div class="form-group">
+                <button type="night_activities-submit" class="btn btn-primary">Create Night Activity</button>
+            </div>
+        </form>
+    </div>
+
+    {{#if itinerary.cost}}
+    <div class="col-md-6 food-list">
+        <h3>Current plans:</h3>
+
+        {{#each itinerary-form as |Plans|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <h4>{{itinerary.cost}}</h4>
+                <p>Itinerary cost: {{itinerary.cost}}</p>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-danger delete-itinerary" data-id="{{itinerary.id}}">DELETE</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
