@@ -1,21 +1,21 @@
 const router = require('express').Router();
-const { trip, user, budget, itinerary} = require('../models');
+const { Trip, User, Budget,Itinerary} = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const tripData = await trip.findAll({
+    const tripData = await Trip.findAll({
       include: [
         {
-          model: user,
+          model: User,
           attributes: ['name'],
         },
       ],
     });
 
     // Serialize data so the template can read it
-    const trips = tripData.map((trip) => trip.get({ plain: true }));
+    const trips = tripData.map((trip) => Trip.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -29,10 +29,10 @@ router.get('/', async (req, res) => {
 
 router.get('/trip/:id', async (req, res) => {
   try {
-    const tripData = await trip.findByPk(req.params.id, {
+    const tripData = await Trip.findByPk(req.params.id, {
       include: [
         {
-          model: user,
+          model: User,
           attributes: ['name'],
         },
       ],
@@ -53,17 +53,17 @@ router.get('/trip/:id', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const budgetData = await budget.findAll({
+    const budgetData = await Budget.findAll({
       include: [
         {
-          model: user,
+          model: User,
           attributes: ['name'],
         },
       ],
     });
 
     // Serialize data so the template can read it
-    const budgets = budgetData.map((trip) => budget.get({ plain: true }));
+    const budgets = budgetData.map((trip) => Budget.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -77,10 +77,10 @@ router.get('/', async (req, res) => {
 
 router.get('/budget/:id', async (req, res) => {
   try {
-    const budgetData = await budget.findByPk(req.params.id, {
+    const budgetData = await Budget.findByPk(req.params.id, {
       include: [
         {
-          model: user,
+          model: User,
           attributes: ['name'],
         },
       ],
@@ -101,17 +101,17 @@ router.get('/budget/:id', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const itineraryData = await itinerary.findAll({
+    const itineraryData = await Itinerary.findAll({
       include: [
         {
-          model: user,
+          model: User,
           attributes: ['name'],
         },
       ],
     });
 
     // Serialize data so the template can read it
-    const itinerary = itineraryData.map((itinerary) => itinerary.get({ plain: true }));
+    const itinerary = itineraryData.map((itinerary) => Itinerary.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -125,7 +125,7 @@ router.get('/', async (req, res) => {
 
 router.get('/itinerary/:id', async (req, res) => {
   try {
-    const itineraryData = await itinerary.findByPk(req.params.id, {
+    const itineraryData = await Itinerary.findByPk(req.params.id, {
       include: [
         {
           model: user,
@@ -149,7 +149,7 @@ router.get('/itinerary/:id', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await user.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Project }],
     });
