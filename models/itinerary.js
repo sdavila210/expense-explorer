@@ -10,6 +10,12 @@ itinerary.init(
   // Define fields/columns on model
   // An `id` is automatically created by Sequelize, though best practice would be to define the primary key ourselves
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     Food: {
       type: DataTypes.STRING
     },
@@ -32,8 +38,22 @@ itinerary.init(
     Night_activities: {
       type: DataTypes.BOOLEAN
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+    trip_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'trip',
+        key: 'id',
+      },
+    },
   },
-{
+  {
     // Link to database connection
     sequelize,
     // Set to false to remove `created_at` and `updated_at` fields

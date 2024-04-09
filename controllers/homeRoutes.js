@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Trip, User, Budget,Itinerary} = require('../models');
+const { Trip, User, Budget, Itinerary } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -15,12 +15,12 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const trips = tripData.map((trip) => Trip.get({ plain: true }));
+    const trips = tripData.map((trip) => trip.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      trips, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      trips,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -63,12 +63,12 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const budgets = budgetData.map((trip) => Budget.get({ plain: true }));
+    const budgets = budgetData.map((budget) => budget.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      budgets, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      budgets,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -111,12 +111,12 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const itinerary = itineraryData.map((itinerary) => Itinerary.get({ plain: true }));
+    const itinerary = itineraryData.map((itinerary) => itinerary.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      itinerary, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      itinerary,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -151,7 +151,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Trip }],
     });
 
     const user = userData.get({ plain: true });

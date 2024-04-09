@@ -24,7 +24,27 @@ Budget.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
+        trip_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'trip',
+                key: 'id',
+            },
+        },
+        itinerary_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'itineraries',
+                key: 'id'
+            },
+        },
     },
     {
         sequelize,

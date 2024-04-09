@@ -1,0 +1,24 @@
+<!-- Loop over each object in the projects array -->
+{{#each trips as |trip| }}
+<div class="row mb-4 project">
+    <div class="col-md-5">
+        <h2>
+            <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+            {{{get_emoji}}}
+            <a href="/trip/{{trip.id}}">{{trip.location}}</a>
+        </h2>
+        <p>
+            <span for="img" aria-label="money">💲</span>
+            <!-- Pass needed_funding value to the helper function -->
+            <span class="dollar-amount">{{ budget.total_amount}}</span>
+            needed!
+        </p>
+        <p>Created by {{trip.user.name}} on {{format_date project.date_created}}</p>
+    </div>
+    <div class="col-md-7">
+        <p>
+            {{trip.description}}
+        </p>
+    </div>
+</div>
+{{/each}}
