@@ -50,13 +50,100 @@ router.get('/trip/:id', async (req, res) => {
 });
 
 
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const budgetData = await budget.findAll({
+      include: [
+        {
+          model: user,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const budgets = budgetData.map((trip) => budget.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      budgets, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/budget/:id', async (req, res) => {
+  try {
+    const budgetData = await budget.findByPk(req.params.id, {
+      include: [
+        {
+          model: user,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const budget = budgetData.get({ plain: true });
+
+    res.render('budget', {
+      ...budget,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const itineraryData = await itinerary.findAll({
+      include: [
+        {
+          model: user,
+          attributes: ['name'],
+        },
+      ],
+    });
 
+    // Serialize data so the template can read it
+    const itinerary = itineraryData.map((itinerary) => itinerary.get({ plain: true }));
 
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      itinerary, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
+router.get('/itinerary/:id', async (req, res) => {
+  try {
+    const itineraryData = await itinerary.findByPk(req.params.id, {
+      include: [
+        {
+          model: user,
+          attributes: ['name'],
+        },
+      ],
+    });
 
+    const itinerary = itineraryData.get({ plain: true });
 
+    res.render('itinerary', {
+      ...itinerary,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
