@@ -29,7 +29,7 @@ router.get('/budgets', withAuth, (req, res) => {
 // Edit a specific budget
 router.get('/budgets/edit/:id', withAuth, (req, res) => {
     Budget.findByPk(req.params.id, {
-        attributes: ['id', 'category_cost', 'total_amount', 'date_created'],
+        attributes: ['id', 'budget_name', 'total_amount', 'created_at'],
         include: [
             {
                 model: Expense,
@@ -86,4 +86,3 @@ router.delete('/budgets/:id', withAuth, (req, res) => {
 });
 
 module.exports = router;
-

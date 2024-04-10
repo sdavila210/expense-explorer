@@ -1,0 +1,24 @@
+<div class="budget-details">
+    <h2>{{ budget_name }}</h2>
+    <p>Total Amount: {{ budget.total_amount }}</p>
+    <h3>Expenses</h3>
+    <ul>
+        <li>
+            <p>Category: {{ category_cost }}</p>
+            <p>Amount: {{ total_amount }}</p>
+            <p>Date: {{ format_date(date_created) }}</p>
+        </li>
+    </ul>
+    <form>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
+
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount">
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <button type="submit" class="submit">Create trip</button>
+    </form>
+</div>
