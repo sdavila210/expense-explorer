@@ -19,9 +19,6 @@ itinerary.init(
     Food: {
       type: DataTypes.STRING
     },
-    Parks: {
-      type: DataTypes.STRING
-    },
     Attractions: {
       type: DataTypes.STRING
     },
