@@ -11,12 +11,36 @@ Trip.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        location: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        travel_dates: {
+        description: {
+            type: DataTypes.STRING,
+        },
+        date_created: {
             type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        needed_funding_hotel: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        needed_funding_transportation: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        needed_funding_food: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        needed_funding_attractions: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        needed_funding_total: {
+            type: DataTypes.FLOAT,
             allowNull: false,
         },
         user_id: {

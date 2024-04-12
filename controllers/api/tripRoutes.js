@@ -2,19 +2,17 @@ const router = require('express').Router();
 const { Trip } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
 router.post('/', withAuth, async (req, res) => {
     try {
-        const { location, travel_dates, user_id } = req.body;
-
-        const trip = await Trip.create({
-            location,
-            travel_dates,
-            user_id
+        const newTrip = await Trip.create({
+            ...req.body,
+            user_id: req.session.user_id,
         });
 
-        res.status(200).json(trip);
-    } catch (error) {
-        res.status(400).json(error);
+        res.status(200).json(newTrip);
+    } catch (err) {
+        res.status(400).json(err);
     }
 });
 
@@ -37,6 +35,5 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 module.exports = router;
