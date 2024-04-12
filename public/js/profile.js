@@ -1,30 +1,33 @@
-const newTripFormHandler = async (event) => {
+const newFormHandler = async (event) => {
     event.preventDefault();
 
-    // Get form values
-    const location = document.querySelector('#trip-location').value.trim();
-    const travel_dates = document.querySelector('#trip-dates').value.trim();
+    const name = document.querySelector('#project-name').value.trim();
+    const description = document.querySelector('#project-desc').value.trim();
+    const needed_funding_hotel = parseFloat(document.querySelector('#project-funding-hotel').value.trim());
+    const needed_funding_transportation = parseFloat(document.querySelector('#project-funding-transportation').value.trim());
+    const needed_funding_food = parseFloat(document.querySelector('#project-funding-food').value.trim());
+    const needed_funding_attractions = parseFloat(document.querySelector('#project-funding-attractions').value.trim());
+    const needed_funding_total = needed_funding_hotel + needed_funding_transportation + needed_funding_attractions;
 
-    // Check if form fields are not empty
-    if (location && travel_dates) {
-        // Send POST request to create new trip
-        const response = await fetch('/api/trip', {
+    if (name && description && needed_funding_hotel && needed_funding_transportation && needed_funding_food && needed_funding_attractions) {
+        const response = await fetch(`/api/trips`, {
             method: 'POST',
-            body: JSON.stringify({ location, travel_dates }),
+            body: JSON.stringify({ name, description, needed_funding_hotel, needed_funding_transportation, needed_funding_food, needed_funding_attractions, needed_funding_total }),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
 
         if (response.ok) {
-            // Reload the page to show the updated list of trips
-            document.location.reload();
+            document.location.replace('/profile');
         } else {
             alert('Failed to create trip');
         }
-    } else {
-        alert('Please fill out all fields');
     }
 };
 
-document.querySelector('.new-trip-form').addEventListener('submit', newTripFormHandler);
+
+document
+    .querySelector('.new-project-form')
+    .addEventListener('submit', newFormHandler);
+

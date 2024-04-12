@@ -1,14 +1,29 @@
 [
     {
-        "location": "Japan",
-        "travel_dates": "June 3, 2024 - June 15,2024"
+        "name": "Japan",
+        "description": "Travel Dates: 6/11/24-6/22/24. I'm excited to go to Disneyland Tokyo!",
+        "needed_funding_hotel": 1500,
+        "needed_funding_transportation": 2000,
+        "needed_funding_food": 500,
+        "needed_funding_attractions": 1500,
+        "needed_funding_total": 5000
     },
     {
-        "location": "California",
-        "travel_dates": "August 20, 2024 - August 24, 2024"
+        "name": "Mexico",
+        "description": "Travel Dates: 8/20/24-8/26/24. Stayed at an all-inclusive in Cancun!",
+        "needed_funding_hotel": 1000,
+        "needed_funding_transportation": 500,
+        "needed_funding_food": 350,
+        "needed_funding_attractions": 500,
+        "needed_funding_total": 2350
     },
     {
-        "location": "Florida",
-        "travel_dates": "September 14, 2024 - September 20, 2024"
+        "name": "Spain",
+        "description": "Travel Dates: 9/20/24-9/30/24",
+        "needed_funding_hotel": 1500,
+        "needed_funding_transportation": 1000,
+        "needed_funding_food": 500,
+        "needed_funding_attractions": 500,
+        "needed_funding_total": 3500
     }
 ]

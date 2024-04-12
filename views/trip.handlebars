@@ -1,14 +1,38 @@
 <div class="text-center">
     <h2>{{name}}</h2>
-    <p>{{{location}}}</p>
-    <p>{{travel_dates}}</p>
+    <p>Additional Notes: {{description}}</p>
     <p>Created by {{user.name}} on {{format_date date_created}}</p>
-    <p>
+
+
+    <p>Hotel Cost:
         <span for="img" aria-label="money">💲</span>
-        <span class="dollar-amount">{{needed_funding}}</span>
-        needed
+        <span class="dollar-amount">{{format_amount needed_funding_hotel}}</span>
     </p>
-    <p>
-        <button class="btn btn-primary">Plan this trip!</button>
+
+    <p>Transportation Cost:
+        <span for="img" aria-label="money">💲</span>
+        <span class="dollar-amount">{{format_amount needed_funding_transportation}}</span>
     </p>
+
+    <p>Food Cost:
+        <span for="img" aria-label="money">💲</span>
+        <span class="dollar-amount">{{format_amount needed_funding_food}}</span>
+    </p>
+
+
+    <p>Attractions Cost:
+        <span for="img" aria-label="money">💲</span>
+        <span class="dollar-amount">{{format_amount needed_funding_attractions}}</span>
+    </p>
+
+
+
+
+    <p>Total Needed for trip:
+        <span for="img" aria-label="money">💲</span>
+        <span class="dollar-amount">{{format_amount needed_funding_total}}</span>
+    </p>
+    <div class="export-button-container">
+        <a href="/trips/export/{{tripId}}" class="btn btn-primary">Export this Trip</a>
+    </div>
 </div>
